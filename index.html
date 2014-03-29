@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script type="application/javascript" src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href='http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy|Raleway:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div id="controls">
+        <input type='month' id='month' onchange='updateMonth(event)' /><button onclick="downloadSvg(event)">Download SVG</button><br/>
+        <label id='targetDay'></label><br/>
+        <textarea id='eventDescription' onkeyup='changeDescription(event)'></textarea>
+    </div>
+    <svg id="prototypes">
+        <g id="datePrototype">
+            <rect x="0" y="0" width="120" height="120" style="fill:#ffffff;width:50;stroke-width:1px;stroke:#000000;"></rect>
+            <text x="112" y="16" class="numerals" >Hi</text>
+            <text x="6" y="16" class="events">Line1</text>
+            <text x="6" y="32" class="events">Line2</text>
+            <text x="6" y="48" class="events">Line3</text>
+            <text x="6" y="64" class="events">Line4</text>
+            <text x="6" y="80" class="events">Line5</text>
+            <text x="6" y="96" class="events">Line6</text>
+            <text x="6" y="112" class="events">Line7</text>
+        </g>
+    </svg>
+    <div id="calendarDiv">
+        <svg id="calendarArea" width="840" height="720">
+            
+        </svg>
+    </div>
+
+</body>
+
+</html>
