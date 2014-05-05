@@ -1,37 +1,118 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
 
 <head>
-    <script type="application/javascript" src="script.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link href='http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy|Raleway:300' rel='stylesheet' type='text/css'>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>calendar-creator</title>
+	<meta name="description" content="An app for creating simple SVG calendars">
+	<meta name="author" content="Alex Bigelow">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- Fonts
+  ================================================== -->
+	<link href='http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600,400' rel='stylesheet' type='text/css'>
+	
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="stylesheets/base.css">
+	<link rel="stylesheet" href="stylesheets/skeleton.css">
+	<link rel="stylesheet" href="stylesheets/layout.css">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+	<script type="application/javascript" src="script.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/extras.css" />
 </head>
 
-<body>
-    <div id="controls">
-        <input type='month' id='month' onchange='updateMonth(event)' /><button onclick="downloadSvg(event)">Download SVG</button><br/>
-        <label id='targetDay'></label><br/>
-        <textarea id='eventDescription' onkeyup='changeDescription(event)'></textarea>
-    </div>
-    <svg id="prototypes">
-        <g id="datePrototype">
-            <rect x="0" y="0" width="120" height="120" style="fill:#ffffff;width:50;stroke-width:1px;stroke:#000000;"></rect>
-            <text x="112" y="16" class="numerals" >Hi</text>
-            <text x="6" y="16" class="events">Line1</text>
-            <text x="6" y="32" class="events">Line2</text>
-            <text x="6" y="48" class="events">Line3</text>
-            <text x="6" y="64" class="events">Line4</text>
-            <text x="6" y="80" class="events">Line5</text>
-            <text x="6" y="96" class="events">Line6</text>
-            <text x="6" y="112" class="events">Line7</text>
-        </g>
-    </svg>
-    <div id="calendarDiv">
-        <svg id="calendarArea" width="840" height="720">
-            
-        </svg>
-    </div>
+<body onload="findStyleSheetIndex(); setDate(new Date());">
+	<div class="container">
+		<svg id="prototypes">
+			<g id="datePrototype" class="unselected">
+				<rect x="0" y="0" width="120" height="120" id="rectPrototype"></rect>
+				<text x="112" y="16" class="numerals">Hi</text>
+				<text x="6" y="16" class="events">Line1</text>
+				<text x="6" y="32" class="events">Line2</text>
+				<text x="6" y="48" class="events">Line3</text>
+				<text x="6" y="64" class="events">Line4</text>
+				<text x="6" y="80" class="events">Line5</text>
+				<text x="6" y="96" class="events">Line6</text>
+				<text x="6" y="112" class="events">Line7</text>
+			</g>
+		</svg>
+		<div id="calendarDiv">
+			<svg id="calendarArea" width="840" height="720">
 
+			</svg>
+		</div>
+	</div>
+	<div class="container">
+		<div id="controls">
+			<select type='select' id='month' onchange='updateMonth()'>
+				<option value="1">January</option>
+				<option value="2">February</option>
+				<option value="3">March</option>
+				<option value="4">April</option>
+				<option value="5">May</option>
+				<option value="6">June</option>
+				<option value="7">July</option>
+				<option value="8">August</option>
+				<option value="9">September</option>
+				<option value="10">October</option>
+				<option value="11">November</option>
+				<option value="12">December</option>
+			</select>
+			<input type='number' id='year' onchange='updateMonth(event)' />
+			<br/>
+			<label>Numeral Font:</label>
+			<input list='fonts' id='numeralFont' onchange='updateNumeralFont()' value="Palatino" />
+			<input type='number' id='numeralFontSize' onchange='updateNumeralSize()' value="14" />
+			<br/>
+			<label>Event Font:</label>
+			<input list='fonts' id='textFont' onchange='updateTextFont()' value="Trebuchet MS" />
+			<input type='number' id='textFontSize' onchange='updateTextSize()' value="9" />
+			<br/>
+			<datalist id='fonts'>
+				<option>Georgia</option>
+				<option>Palatino</option>
+				<option>Times New Roman</option>
+				<option>Arial</option>
+				<option>Arial Black</option>
+				<option>Lucida Grande</option>
+				<option>Tahoma</option>
+				<option>Trebuchet MS</option>
+				<option>Verdana</option>
+			</datalist>
+			<!--<label>Width:</label>
+			<input type='number' id='boxWidth' onchange='updateBoxes()' value="120"/>
+			<label>Height:</label>
+			<input type='number' id='boxHeight' onchange='updateBoxes()' value="120"/><br/>-->
+			<button onclick="eraseCalendar()">Clear Events</button>
+			<button onclick="downloadSvg(event)" id="downloadButton">Download SVG</button>
+			<textarea id='eventDescription' onkeyup='changeDescription(event)'></textarea>
+		</div>
+	</div>
 </body>
 
 </html>

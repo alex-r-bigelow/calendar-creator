@@ -1,0 +1,16 @@
+.numerals {
+    font-family: "Palatino";
+    font-size: 14px;
+    text-anchor: end;
+    text-align: right;
+}
+.events {
+    font-family: "Trebuchet MS";
+    font-size: 9px;
+}
+svg rect {
+	width:50;
+	stroke-width:1px;
+	stroke:#000000;
+	fill: #ffffff;
+}

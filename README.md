@@ -1,4 +1,4 @@
 calendar-creator
 ================
 
-Tiny project that creates a downloadable SVG calendar
+Tiny project for creating simple downloadable SVG calendars
