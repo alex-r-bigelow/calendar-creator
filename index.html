@@ -68,49 +68,53 @@
 		</div>
 	</div>
 	<div class="container">
-		<div id="controls">
-			<select type='select' id='month' onchange='updateMonth()'>
-				<option value="1">January</option>
-				<option value="2">February</option>
-				<option value="3">March</option>
-				<option value="4">April</option>
-				<option value="5">May</option>
-				<option value="6">June</option>
-				<option value="7">July</option>
-				<option value="8">August</option>
-				<option value="9">September</option>
-				<option value="10">October</option>
-				<option value="11">November</option>
-				<option value="12">December</option>
-			</select>
-			<input type='number' id='year' onchange='updateMonth(event)' />
-			<br/>
-			<label>Numeral Font:</label>
-			<input list='fonts' id='numeralFont' onchange='updateNumeralFont()' value="Palatino" />
-			<input type='number' id='numeralFontSize' onchange='updateNumeralSize()' value="14" />
-			<br/>
-			<label>Event Font:</label>
-			<input list='fonts' id='textFont' onchange='updateTextFont()' value="Trebuchet MS" />
-			<input type='number' id='textFontSize' onchange='updateTextSize()' value="9" />
-			<br/>
-			<datalist id='fonts'>
-				<option>Georgia</option>
-				<option>Palatino</option>
-				<option>Times New Roman</option>
-				<option>Arial</option>
-				<option>Arial Black</option>
-				<option>Lucida Grande</option>
-				<option>Tahoma</option>
-				<option>Trebuchet MS</option>
-				<option>Verdana</option>
-			</datalist>
+		<div id="controls" class="sixteen columns">
+			<div class="five columns">
+				<select type='select' id='month' onchange='updateMonth()'>
+					<option value="1">January</option>
+					<option value="2">February</option>
+					<option value="3">March</option>
+					<option value="4">April</option>
+					<option value="5">May</option>
+					<option value="6">June</option>
+					<option value="7">July</option>
+					<option value="8">August</option>
+					<option value="9">September</option>
+					<option value="10">October</option>
+					<option value="11">November</option>
+					<option value="12">December</option>
+				</select>
+				<input type='number' id='year' onchange='updateMonth(event)' />
+				<textarea id='eventDescription' onkeyup='changeDescription(event)'></textarea>
+			</div>
+			<div class="five columns">
+				<label>Numeral Font:</label>
+				<input list='fonts' id='numeralFont' onchange='updateNumeralFont()' value="Palatino" />
+				<input type='number' id='numeralFontSize' onchange='updateNumeralSize()' value="14" />
+				<label>Event Font:</label>
+				<input list='fonts' id='textFont' onchange='updateTextFont()' value="Trebuchet MS" />
+				<input type='number' id='textFontSize' onchange='updateTextSize()' value="9" />
+				<datalist id='fonts'>
+					<option>Georgia</option>
+					<option>Palatino</option>
+					<option>Times New Roman</option>
+					<option>Arial</option>
+					<option>Arial Black</option>
+					<option>Lucida Grande</option>
+					<option>Tahoma</option>
+					<option>Trebuchet MS</option>
+					<option>Verdana</option>
+				</datalist>
+				<p id="footnote">Note: any fonts installed on your system should work, but for Javascript security reasons, I can't get your computer's list. Typing in the name should work, though.</p>
+			</div>
 			<!--<label>Width:</label>
 			<input type='number' id='boxWidth' onchange='updateBoxes()' value="120"/>
 			<label>Height:</label>
 			<input type='number' id='boxHeight' onchange='updateBoxes()' value="120"/><br/>-->
-			<button onclick="eraseCalendar()">Clear Events</button>
-			<button onclick="downloadSvg(event)" id="downloadButton">Download SVG</button>
-			<textarea id='eventDescription' onkeyup='changeDescription(event)'></textarea>
+			<div class="five columns" id="endButtons">
+				<button onclick="eraseCalendar()">Clear Events</button>
+				<button onclick="downloadSvg(event)" id="downloadButton">Download SVG</button>
+			</div>
 		</div>
 	</div>
 </body>

@@ -5,7 +5,7 @@
 	overflow : scroll;
 }
 #eventDescription {
-    
+    width: 100%;
 }
 #controls {
 	
@@ -21,4 +21,7 @@ svg .selected rect {
 }
 svg .unselected rect {
 	fill:#ffffff;
+}
+#footnote {
+	font-size: 8pt;
 }

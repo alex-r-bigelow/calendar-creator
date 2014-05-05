@@ -14,3 +14,6 @@ svg rect {
 	stroke:#000000;
 	fill: #ffffff;
 }
+#endButtons {
+	text-align: right;
+}
