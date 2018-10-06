@@ -89,6 +89,7 @@
 					<textarea id='eventDescription' onkeyup='changeDescription(event)'></textarea>
 				</div>
 			</div>
+
 			<div class="five columns">
 				<datalist id='fonts'>
 					<option>Georgia</option>
@@ -101,6 +102,16 @@
 					<option>Trebuchet MS</option>
 					<option>Verdana</option>
 				</datalist>
+				<label>Week starts on:</label>
+				<select type='select' id='start-day' onchange='updateMonth()'>
+					<option value="0">Sunday</option>
+					<option value="1">Monday</option>
+					<option value="2">Tuesday</option>
+					<option value="3">Webnesday</option>
+					<option value="4">Thursday</option>
+					<option value="5">Friday</option>
+					<option value="6">Saturday</option>
+				</select>
 				<label>Numeral Font:</label>
 				<input list='fonts' id='numeralFont' onchange='updateNumeralFont()' value="Palatino" />
 				<input type='number' id='numeralFontSize' onchange='updateNumeralSize()' value="14" />
