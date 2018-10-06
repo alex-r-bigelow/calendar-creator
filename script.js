@@ -70,6 +70,7 @@ function updateMonth() {
     "use strict";
     var year = document.getElementById('year').value,
         month = document.getElementById('month').value,
+        calendarStartDay = +document.getElementById('start-day').value,
         firstDay = new Date(year, month - 1), // Not sure why -1... chrome bug?
         lastDay = new Date(year, month, -0),
         dateGroup = document.getElementById('datePrototype'),
@@ -92,7 +93,7 @@ function updateMonth() {
     dy = Number(dy);
 
     y = 0;
-    x = dx * firstDay.getDay();
+    x = dx * ((firstDay.getDay() - calendarStartDay + 7) % 7);
 
     for (i = 1; i <= lastDay.getDate(); i += 1) {
 		targetDay = month + "/" + i + "/" + year;
