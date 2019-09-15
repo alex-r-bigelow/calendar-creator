@@ -235,7 +235,7 @@ function findStyleSheetIndex() {
 	"use strict";
 	var i;
 	for (i = 0; i < document.styleSheets.length; i += 1) {
-		if (document.styleSheets[i].rules &&
+		if (document.styleSheets[i].hasOwnProperty('rules') &&
 			    document.styleSheets[i].rules[0].cssText.substring(0, 9) === ('.numerals')) {
 			sheetIndex = i;
 			return;
